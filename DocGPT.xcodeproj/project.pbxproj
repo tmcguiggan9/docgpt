@@ -1,0 +1,551 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BC02B4EF2A09D4A50027BCA9 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC02B4EE2A09D4A50027BCA9 /* LoadingViewController.swift */; };
+		BC21DD8F29FF1B710063FA1D /* DocGPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DD8E29FF1B710063FA1D /* DocGPTApp.swift */; };
+		BC21DD9129FF1B710063FA1D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DD9029FF1B710063FA1D /* ContentView.swift */; };
+		BC21DD9329FF1B740063FA1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC21DD9229FF1B740063FA1D /* Assets.xcassets */; };
+		BC21DD9629FF1B740063FA1D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC21DD9529FF1B740063FA1D /* Preview Assets.xcassets */; };
+		BC21DD9829FF1B740063FA1D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DD9729FF1B740063FA1D /* Persistence.swift */; };
+		BC21DD9B29FF1B740063FA1D /* DocGPT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC21DD9929FF1B740063FA1D /* DocGPT.xcdatamodeld */; };
+		BC21DDA429FF1C390063FA1D /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDA329FF1C390063FA1D /* ContentViewModel.swift */; };
+		BC21DDA929FF1D240063FA1D /* ChatGPTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDA829FF1D240063FA1D /* ChatGPTAPI.swift */; };
+		BC21DDAB29FF1D4E0063FA1D /* ChatGPTAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDAA29FF1D4E0063FA1D /* ChatGPTAPIModels.swift */; };
+		BC21DDAD29FF1DB00063FA1D /* SideMenuVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDAC29FF1DB00063FA1D /* SideMenuVIew.swift */; };
+		BC21DDAF29FF1DD20063FA1D /* DotLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDAE29FF1DD20063FA1D /* DotLoadingView.swift */; };
+		BC21DDB129FF1DF20063FA1D /* MessageRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDB029FF1DF20063FA1D /* MessageRowView.swift */; };
+		BC21DDB429FF1E810063FA1D /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDB329FF1E810063FA1D /* MessageRow.swift */; };
+		BC21DDB829FF24740063FA1D /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDB729FF24740063FA1D /* Authenticator.swift */; };
+		BC80D6BD2A02ED420066F120 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC80D6BC2A02ED420066F120 /* AppDelegate.swift */; };
+		BCA9008B2A061E16008E01AE /* PybeRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA9008A2A061E15008E01AE /* PybeRequests.swift */; };
+		BCA9008D2A06B611008E01AE /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA9008C2A06B611008E01AE /* DocumentPicker.swift */; };
+		BCB2DCB02A4501A700B21F1F /* SignInSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB2DCAF2A4501A700B21F1F /* SignInSignUpViewController.swift */; };
+		D85F4949CA0C96C5FCB19720 /* Pods_DocGPT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1CB15D2D3CAC579343231C /* Pods_DocGPT.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		75CECB1B2306CA01580BC198 /* Pods-DocGPT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocGPT.release.xcconfig"; path = "Target Support Files/Pods-DocGPT/Pods-DocGPT.release.xcconfig"; sourceTree = "<group>"; };
+		BC02B4EE2A09D4A50027BCA9 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		BC21DD8B29FF1B710063FA1D /* DocGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC21DD8E29FF1B710063FA1D /* DocGPTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocGPTApp.swift; sourceTree = "<group>"; };
+		BC21DD9029FF1B710063FA1D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BC21DD9229FF1B740063FA1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BC21DD9529FF1B740063FA1D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BC21DD9729FF1B740063FA1D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		BC21DD9A29FF1B740063FA1D /* DocGPT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DocGPT.xcdatamodel; sourceTree = "<group>"; };
+		BC21DDA329FF1C390063FA1D /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		BC21DDA829FF1D240063FA1D /* ChatGPTAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTAPI.swift; sourceTree = "<group>"; };
+		BC21DDAA29FF1D4E0063FA1D /* ChatGPTAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTAPIModels.swift; sourceTree = "<group>"; };
+		BC21DDAC29FF1DB00063FA1D /* SideMenuVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVIew.swift; sourceTree = "<group>"; };
+		BC21DDAE29FF1DD20063FA1D /* DotLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotLoadingView.swift; sourceTree = "<group>"; };
+		BC21DDB029FF1DF20063FA1D /* MessageRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowView.swift; sourceTree = "<group>"; };
+		BC21DDB329FF1E810063FA1D /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
+		BC21DDB729FF24740063FA1D /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
+		BC21DDB929FF5C5D0063FA1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BC80D6BA2A02EBCB0066F120 /* DocGPT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DocGPT.entitlements; sourceTree = "<group>"; };
+		BC80D6BC2A02ED420066F120 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BCA9008A2A061E15008E01AE /* PybeRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PybeRequests.swift; sourceTree = "<group>"; };
+		BCA9008C2A06B611008E01AE /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
+		BCB2DCAF2A4501A700B21F1F /* SignInSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInSignUpViewController.swift; sourceTree = "<group>"; };
+		BF01C24A6BCA1D77BB8884C8 /* Pods-DocGPT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocGPT.debug.xcconfig"; path = "Target Support Files/Pods-DocGPT/Pods-DocGPT.debug.xcconfig"; sourceTree = "<group>"; };
+		DA1CB15D2D3CAC579343231C /* Pods_DocGPT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DocGPT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC21DD8829FF1B710063FA1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D85F4949CA0C96C5FCB19720 /* Pods_DocGPT.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		24C33FFD351320157B01DD33 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF01C24A6BCA1D77BB8884C8 /* Pods-DocGPT.debug.xcconfig */,
+				75CECB1B2306CA01580BC198 /* Pods-DocGPT.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BB95423FC0F0541B620D1F89 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA1CB15D2D3CAC579343231C /* Pods_DocGPT.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC21DD8229FF1B700063FA1D = {
+			isa = PBXGroup;
+			children = (
+				BC21DD8D29FF1B710063FA1D /* DocGPT */,
+				BC21DD8C29FF1B710063FA1D /* Products */,
+				24C33FFD351320157B01DD33 /* Pods */,
+				BB95423FC0F0541B620D1F89 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BC21DD8C29FF1B710063FA1D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC21DD8B29FF1B710063FA1D /* DocGPT.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC21DD8D29FF1B710063FA1D /* DocGPT */ = {
+			isa = PBXGroup;
+			children = (
+				BC80D6BA2A02EBCB0066F120 /* DocGPT.entitlements */,
+				BC21DDB929FF5C5D0063FA1D /* Info.plist */,
+				BC21DDB629FF245E0063FA1D /* Authentication */,
+				BC21DDB229FF1E3E0063FA1D /* Models */,
+				BC21DDA529FF1CE10063FA1D /* Networking */,
+				BC21DDA229FF1C130063FA1D /* ViewModels */,
+				BC21DDA129FF1BFD0063FA1D /* Views */,
+				BC21DD8E29FF1B710063FA1D /* DocGPTApp.swift */,
+				BC21DD9229FF1B740063FA1D /* Assets.xcassets */,
+				BC21DD9729FF1B740063FA1D /* Persistence.swift */,
+				BC21DD9929FF1B740063FA1D /* DocGPT.xcdatamodeld */,
+				BC21DD9429FF1B740063FA1D /* Preview Content */,
+				BC80D6BC2A02ED420066F120 /* AppDelegate.swift */,
+			);
+			path = DocGPT;
+			sourceTree = "<group>";
+		};
+		BC21DD9429FF1B740063FA1D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BC21DD9529FF1B740063FA1D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BC21DDA129FF1BFD0063FA1D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BC21DD9029FF1B710063FA1D /* ContentView.swift */,
+				BC21DDAC29FF1DB00063FA1D /* SideMenuVIew.swift */,
+				BC21DDAE29FF1DD20063FA1D /* DotLoadingView.swift */,
+				BC21DDB029FF1DF20063FA1D /* MessageRowView.swift */,
+				BCA9008C2A06B611008E01AE /* DocumentPicker.swift */,
+				BC02B4EE2A09D4A50027BCA9 /* LoadingViewController.swift */,
+				BCB2DCAF2A4501A700B21F1F /* SignInSignUpViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BC21DDA229FF1C130063FA1D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BC21DDA329FF1C390063FA1D /* ContentViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BC21DDA529FF1CE10063FA1D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				BC21DDA729FF1D070063FA1D /* PyBe */,
+				BC21DDA629FF1CF40063FA1D /* ChatGPT */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		BC21DDA629FF1CF40063FA1D /* ChatGPT */ = {
+			isa = PBXGroup;
+			children = (
+				BC21DDA829FF1D240063FA1D /* ChatGPTAPI.swift */,
+				BC21DDAA29FF1D4E0063FA1D /* ChatGPTAPIModels.swift */,
+			);
+			path = ChatGPT;
+			sourceTree = "<group>";
+		};
+		BC21DDA729FF1D070063FA1D /* PyBe */ = {
+			isa = PBXGroup;
+			children = (
+				BCA9008A2A061E15008E01AE /* PybeRequests.swift */,
+			);
+			path = PyBe;
+			sourceTree = "<group>";
+		};
+		BC21DDB229FF1E3E0063FA1D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BC21DDB329FF1E810063FA1D /* MessageRow.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BC21DDB629FF245E0063FA1D /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				BC21DDB729FF24740063FA1D /* Authenticator.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC21DD8A29FF1B710063FA1D /* DocGPT */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC21DD9E29FF1B740063FA1D /* Build configuration list for PBXNativeTarget "DocGPT" */;
+			buildPhases = (
+				E4EA8F2138215BAEF270757C /* [CP] Check Pods Manifest.lock */,
+				BC21DD8729FF1B710063FA1D /* Sources */,
+				BC21DD8829FF1B710063FA1D /* Frameworks */,
+				BC21DD8929FF1B710063FA1D /* Resources */,
+				EFA4C0894C6012B6F34A32A1 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DocGPT;
+			productName = DocGPT;
+			productReference = BC21DD8B29FF1B710063FA1D /* DocGPT.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC21DD8329FF1B700063FA1D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					BC21DD8A29FF1B710063FA1D = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = BC21DD8629FF1B700063FA1D /* Build configuration list for PBXProject "DocGPT" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BC21DD8229FF1B700063FA1D;
+			productRefGroup = BC21DD8C29FF1B710063FA1D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC21DD8A29FF1B710063FA1D /* DocGPT */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC21DD8929FF1B710063FA1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC21DD9629FF1B740063FA1D /* Preview Assets.xcassets in Resources */,
+				BC21DD9329FF1B740063FA1D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E4EA8F2138215BAEF270757C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DocGPT-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFA4C0894C6012B6F34A32A1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DocGPT/Pods-DocGPT-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DocGPT/Pods-DocGPT-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DocGPT/Pods-DocGPT-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC21DD8729FF1B710063FA1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC21DDA929FF1D240063FA1D /* ChatGPTAPI.swift in Sources */,
+				BC21DDB429FF1E810063FA1D /* MessageRow.swift in Sources */,
+				BC21DDB129FF1DF20063FA1D /* MessageRowView.swift in Sources */,
+				BC02B4EF2A09D4A50027BCA9 /* LoadingViewController.swift in Sources */,
+				BCA9008B2A061E16008E01AE /* PybeRequests.swift in Sources */,
+				BC21DD9B29FF1B740063FA1D /* DocGPT.xcdatamodeld in Sources */,
+				BC21DDAD29FF1DB00063FA1D /* SideMenuVIew.swift in Sources */,
+				BC21DDB829FF24740063FA1D /* Authenticator.swift in Sources */,
+				BC21DD9829FF1B740063FA1D /* Persistence.swift in Sources */,
+				BC21DD9129FF1B710063FA1D /* ContentView.swift in Sources */,
+				BC80D6BD2A02ED420066F120 /* AppDelegate.swift in Sources */,
+				BCB2DCB02A4501A700B21F1F /* SignInSignUpViewController.swift in Sources */,
+				BC21DD8F29FF1B710063FA1D /* DocGPTApp.swift in Sources */,
+				BC21DDAF29FF1DD20063FA1D /* DotLoadingView.swift in Sources */,
+				BC21DDA429FF1C390063FA1D /* ContentViewModel.swift in Sources */,
+				BCA9008D2A06B611008E01AE /* DocumentPicker.swift in Sources */,
+				BC21DDAB29FF1D4E0063FA1D /* ChatGPTAPIModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BC21DD9C29FF1B740063FA1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BC21DD9D29FF1B740063FA1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BC21DD9F29FF1B740063FA1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF01C24A6BCA1D77BB8884C8 /* Pods-DocGPT.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DocGPT/DocGPT.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_ASSET_PATHS = "\"DocGPT/Preview Content\"";
+				DEVELOPMENT_TEAM = 6P7J87MYM2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DocGPT/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tmcguiggan.DocGPT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BC21DDA029FF1B740063FA1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75CECB1B2306CA01580BC198 /* Pods-DocGPT.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DocGPT/DocGPT.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_ASSET_PATHS = "\"DocGPT/Preview Content\"";
+				DEVELOPMENT_TEAM = 6P7J87MYM2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DocGPT/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tmcguiggan.DocGPT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC21DD8629FF1B700063FA1D /* Build configuration list for PBXProject "DocGPT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC21DD9C29FF1B740063FA1D /* Debug */,
+				BC21DD9D29FF1B740063FA1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC21DD9E29FF1B740063FA1D /* Build configuration list for PBXNativeTarget "DocGPT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC21DD9F29FF1B740063FA1D /* Debug */,
+				BC21DDA029FF1B740063FA1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BC21DD9929FF1B740063FA1D /* DocGPT.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BC21DD9A29FF1B740063FA1D /* DocGPT.xcdatamodel */,
+			);
+			currentVersion = BC21DD9A29FF1B740063FA1D /* DocGPT.xcdatamodel */;
+			path = DocGPT.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BC21DD8329FF1B700063FA1D /* Project object */;
+}
