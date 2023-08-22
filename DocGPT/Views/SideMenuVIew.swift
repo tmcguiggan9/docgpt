@@ -16,6 +16,7 @@ struct SideMenuView: View {
     @Binding var isSideMenuVisible: Bool
     @Binding var isGroupMessage: Bool
     @Binding var shouldSignOutUser: Bool
+    @Binding var shouldClearChatHistory: Bool
     
     
     var body: some View {
@@ -35,7 +36,22 @@ struct SideMenuView: View {
                                 }
                 }
             }
-            
+            Button(action: {
+                isSideMenuVisible = false
+                isGroupMessage = false
+            }) {
+                Text("Return to Personal Chat")
+                .padding()
+            }
+            if isGroupMessage == false {
+                Button(action: {
+                    isSideMenuVisible = false
+                    shouldClearChatHistory = true
+                }) {
+                    Text("Clear Chat History")
+                    .padding()
+                }
+            }
             Button(action: {
                 isSideMenuVisible = false
                 shouldSignOutUser = true
@@ -73,7 +89,7 @@ struct Group: Decodable, Hashable {
 
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenuView(userID: .constant("user123"), accessToken: .constant("abc123"), selectedGroup: .constant(nil), isSideMenuVisible: .constant(false), isGroupMessage: .constant(false), shouldSignOutUser: .constant(false))
+        SideMenuView(userID: .constant("user123"), accessToken: .constant("abc123"), selectedGroup: .constant(nil), isSideMenuVisible: .constant(false), isGroupMessage: .constant(false), shouldSignOutUser: .constant(false), shouldClearChatHistory: .constant(false))
     }
 }
 

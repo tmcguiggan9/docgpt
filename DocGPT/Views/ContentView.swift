@@ -30,12 +30,14 @@ struct ContentView: View {
     @State private var givenName: String?
     @ObservedObject var pybeRequests = PybeRequests()
     @State private var selectedGroup: Group?
-    @State private var navigationTitle = "DocGPT"
+    @State private var navigationTitle = "Hunter"
     @State var isGroupMessage = false
     @State var shouldSendToChatGPT = true
     @State var shouldSignOutUser = false
     @State var isSignUpViewVisible = false
     @State var shouldSignInUser = false
+    @State var shouldClearChatHistory = false
+    @State var displayClearChatHistoryPrompt = false
     
     
     
@@ -64,9 +66,20 @@ struct ContentView: View {
                     DocumentPicker(filePath: $selectedFile)
                 }
                 .sheet(isPresented: $isSideMenuVisible) {
-                    SideMenuView(userID: $userID, accessToken: $accessToken, selectedGroup: $selectedGroup, isSideMenuVisible: $isSideMenuVisible, isGroupMessage: $isGroupMessage, shouldSignOutUser: $shouldSignOutUser)
+                    SideMenuView(userID: $userID, accessToken: $accessToken, selectedGroup: $selectedGroup, isSideMenuVisible: $isSideMenuVisible, isGroupMessage: $isGroupMessage, shouldSignOutUser: $shouldSignOutUser, shouldClearChatHistory: $shouldClearChatHistory)
+                        .onDisappear {
+                            if shouldSignOutUser == true {
+                                authenticator?.signoutUser()
+                                vm.messages = []
+                                isSignUpViewVisible = true
+                            } else if shouldClearChatHistory == true {
+                                shouldClearChatHistory = false
+                                displayClearChatHistoryPrompt = true
+                            }
+                            
+                        }
                 }
-                .sheet(isPresented: $isSignUpViewVisible) {
+                .fullScreenCover(isPresented: $isSignUpViewVisible) {
                     SignInSignUpView(shouldSignInUser: $shouldSignInUser, isSignUpViewVisible: $isSignUpViewVisible)
                 }
                 .onChange(of: selectedFile) { fileURL in
@@ -93,13 +106,29 @@ struct ContentView: View {
                         vm.groupID = group.id
                     }
                 })
-                .onChange(of: shouldSignOutUser, perform: { newValue in
-                    authenticator?.signoutUser()
-                    isSignUpViewVisible = true
-                })
                 .onChange(of: shouldSignInUser, perform: { newValue in
                     logIn()
                 })
+                .onChange(of: isGroupMessage, perform: { newValue in
+                    if newValue == true {
+                        print("DO NOTHING")
+                    } else {
+                        getChatHistoryForUser()
+                        print("GETTING USER CHAT HISTORY")
+                    }
+                })
+                .alert(isPresented: $displayClearChatHistoryPrompt) {
+                    Alert(
+                        title: Text("Are you sure you want to clear chat history?"),
+                        message: Text("This action cannot be undone."),
+                        primaryButton: .default(Text("Yes")) {
+                            displayClearChatHistoryPrompt = false
+                            clearChatHistory()
+                        },
+                        secondaryButton: .cancel(Text("No"))
+                    )
+                }
+
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         logIn()
@@ -108,8 +137,30 @@ struct ContentView: View {
         }
     }
     
-    private func getChatHistoryForGroup(selectedGroup: Group) {
+    private func clearChatHistory() {
+        if isGroupMessage {
+            print("CLEAR CHAT HISTORY FOR GROUP")
+        } else {
+            if let userID = userID, let accessToken = accessToken {
+                pybeRequests.clearChatHistoryForUser(userID: userID, bearerToken: accessToken) { _, error in
+                    if let error = error {
+                       print("HAD ERROR WHILE DELETING HISTORY \(error)")
+                    } else {
+                        DispatchQueue.main.async {
+                            vm.messages = []
+                            print("SUCCESSFULLY DELETED HISTORY")
+                        }
+                    }
+                }
+            } else {
+                print("COULD NOT CLEAR CHAT HISTORY")
+            }
+            
+        }
         
+    }
+    
+    private func getChatHistoryForGroup(selectedGroup: Group) {
         guard let viewController = sceneDelegate.rootViewController else {
             preconditionFailure("missing root view controller")
         }
@@ -147,6 +198,53 @@ struct ContentView: View {
                         loadingVC.dismiss(animated: true)
                         navigationTitle = selectedGroup.name
                     }
+                }
+            }
+        }
+    }
+    
+    private func getChatHistoryForUser() {
+        guard let accessToken = accessToken else {
+            print("COULD NOT FIND ACCESSTOKEN")
+            return
+        }
+        
+        guard let userID = userID else {
+            print("COULD NOT FIND USERID")
+            return
+        }
+        
+        guard let viewController = sceneDelegate.rootViewController else {
+            preconditionFailure("missing root view controller")
+        }
+        
+        let loadingVC = LoadingViewController(message: "Retrieving Chat History")
+        
+        DispatchQueue.main.async {
+            viewController.present(loadingVC, animated: true, completion: nil)
+        }
+        
+        pybeRequests.getChatHistoryForUser(userID: userID, bearerToken: accessToken) { response, error in
+            if let error = error {
+                print("Error: \(error)")
+            } else if let response = response {
+                var messages: [MessageRow] = []
+                for chat in response {
+                    let message = chat["message"]
+                    let sender = chat["sender"]
+                    var image = String()
+                    if sender == "chat-GPT" {
+                        image = "openai"
+                    } else {
+                        image = sender!
+                    }
+                    let row = MessageRow(isInteractingWithChatGPT: false, sendImage: image, sendText: message!, responseImage: "")
+                    messages.append(row)
+                }
+                DispatchQueue.main.async {
+                    vm.messages = messages
+                    loadingVC.dismiss(animated: true)
+                    navigationTitle = "HUNTER"
                 }
             }
         }

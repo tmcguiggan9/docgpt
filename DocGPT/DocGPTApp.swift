@@ -24,7 +24,7 @@ extension EnvironmentValues {
 struct DocGPTApp: App {
 
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
-    @StateObject var vm = ContentViewModel(api: ChatGPTAPI(apiKey: "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"))
+    @StateObject var vm = ContentViewModel(api: ChatGPTAPI(apiKey: "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"))
     
     var body: some Scene {
         WindowGroup {

@@ -10,29 +10,23 @@ import MSAL
 import Foundation
 import Security
 
-/// 😃 A View Controller that will respond to the events of the Storyboard.
-
-
 class Authenticator: ObservableObject {
     
     @Published var accessToken: String?
     @Published var userID: String?
-    let kTenantName = "docgptb2c.onmicrosoft.com" // Your tenant name
-    let kAuthorityHostName = "docgptb2c.b2clogin.com" // Your authority host name
-    let kClientID = "3493c6b7-3120-44c9-9650-fc5a60525146" // Your client ID from the portal when you created your application
-    let kSignupOrSigninPolicy = "B2C_1_signupsignin" // Your signup and sign-in policy you created in the portal
-    let kEditProfilePolicy = "b2c_1_edit_profile" // Your edit policy you created in the portal
-    let kResetPasswordPolicy = "b2c_1_reset" // Your reset password policy you created in the portal
-    let kGraphURI = "https://doc-gpt-app.azurewebsites.net/your-route" // This is your backend API that you've configured to accept your app's tokens
-    let kScopes: [String] = ["https://docgptb2c.onmicrosoft.com/test/store_data"] // This is a scope that you've configured your backend API to look for.
-    
-    // DO NOT CHANGE - This is the format of OIDC Token and Authorization endpoints for Azure AD B2C.
+    let kTenantName = "docgptb2c.onmicrosoft.com"
+    let kAuthorityHostName = "docgptb2c.b2clogin.com"
+    let kClientID = "3493c6b7-3120-44c9-9650-fc5a60525146"
+    let kSignupOrSigninPolicy = "B2C_1_signupsignin"
+    let kEditProfilePolicy = "b2c_1_edit_profile"
+    let kResetPasswordPolicy = "b2c_1_reset"
+    let kGraphURI = "https://doc-gpt-app.azurewebsites.net/your-route"
+    let kScopes: [String] = ["https://docgptb2c.onmicrosoft.com/test/store_data"]
     let kEndpoint = "https://%@/tfp/%@/%@"
     
     var application: MSALPublicClientApplication!
     
     var view: UIViewController
-    
     
     init(view: UIViewController) {
         self.view = view
