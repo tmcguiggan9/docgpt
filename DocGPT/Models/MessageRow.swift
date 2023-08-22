@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct MessageRow: Identifiable, Equatable {
-    
     let id = UUID()
-    
     var isInteractingWithChatGPT: Bool
     
     let sendImage: String
@@ -20,5 +18,4 @@ struct MessageRow: Identifiable, Equatable {
     var responseText: String?
     
     var responseError: String?
-    
 }
