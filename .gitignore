@@ -1,2 +1,19 @@
+# Exclude user-specific settings
+*.xcuserdatad
+xcuserdata/
+
+# Exclude build and runtime files
+build/
+DerivedData/
+
+# Exclude CocoaPods dependencies
 Pods/
-Podfile.lock
+
+# Exclude Carthage dependencies
+Carthage/Build
+
+# MacOS Finder files
+.DS_Store
+
+# Swift Package Manager
+.generated/
