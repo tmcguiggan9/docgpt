@@ -39,11 +39,8 @@ struct ContentView: View {
     @State var shouldClearChatHistory = false
     @State var displayClearChatHistoryPrompt = false
     
-    
-    
     var body: some View {
         VStack(spacing: 0) {
-            
             chatListView
                 .navigationBarTitle(navigationTitle, displayMode: .inline)
                 .toolbar {

@@ -22,5 +22,4 @@ struct SignInSignUpView: View {
             }
         }
     }
-    
 }

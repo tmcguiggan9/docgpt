@@ -15,7 +15,6 @@ class LoadingViewController: UIViewController {
         self.message = message
         super.init(nibName: nil, bundle: nil)
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -89,7 +89,6 @@ class ContentViewModel: ObservableObject {
     
     @MainActor
     private func send(text: String, documentText: String? = nil) async {
-        
         let messageText = documentText ?? text
         isInteractingWithChatGPT = true
         var streamText = ""
@@ -132,8 +131,6 @@ class ContentViewModel: ObservableObject {
         speakLastResponse()
         
     }
-    
-    
     
     func speakLastResponse() {
         guard let synthesizer, let responseText = self.messages.last?.responseText, !responseText.isEmpty else {

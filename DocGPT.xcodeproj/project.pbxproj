@@ -15,8 +15,8 @@
 		BC21DD9829FF1B740063FA1D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DD9729FF1B740063FA1D /* Persistence.swift */; };
 		BC21DD9B29FF1B740063FA1D /* DocGPT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC21DD9929FF1B740063FA1D /* DocGPT.xcdatamodeld */; };
 		BC21DDA429FF1C390063FA1D /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDA329FF1C390063FA1D /* ContentViewModel.swift */; };
-		BC21DDA929FF1D240063FA1D /* ChatGPTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDA829FF1D240063FA1D /* ChatGPTAPI.swift */; };
-		BC21DDAB29FF1D4E0063FA1D /* ChatGPTAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDAA29FF1D4E0063FA1D /* ChatGPTAPIModels.swift */; };
+		BC21DDA929FF1D240063FA1D /* ChatGPTAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDA829FF1D240063FA1D /* ChatGPTAPIModels.swift */; };
+		BC21DDAB29FF1D4E0063FA1D /* ChatGPTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDAA29FF1D4E0063FA1D /* ChatGPTAPI.swift */; };
 		BC21DDAD29FF1DB00063FA1D /* SideMenuVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDAC29FF1DB00063FA1D /* SideMenuVIew.swift */; };
 		BC21DDAF29FF1DD20063FA1D /* DotLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDAE29FF1DD20063FA1D /* DotLoadingView.swift */; };
 		BC21DDB129FF1DF20063FA1D /* MessageRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDB029FF1DF20063FA1D /* MessageRowView.swift */; };
@@ -40,8 +40,8 @@
 		BC21DD9729FF1B740063FA1D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		BC21DD9A29FF1B740063FA1D /* DocGPT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DocGPT.xcdatamodel; sourceTree = "<group>"; };
 		BC21DDA329FF1C390063FA1D /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
-		BC21DDA829FF1D240063FA1D /* ChatGPTAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTAPI.swift; sourceTree = "<group>"; };
-		BC21DDAA29FF1D4E0063FA1D /* ChatGPTAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTAPIModels.swift; sourceTree = "<group>"; };
+		BC21DDA829FF1D240063FA1D /* ChatGPTAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTAPIModels.swift; sourceTree = "<group>"; };
+		BC21DDAA29FF1D4E0063FA1D /* ChatGPTAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTAPI.swift; sourceTree = "<group>"; };
 		BC21DDAC29FF1DB00063FA1D /* SideMenuVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVIew.swift; sourceTree = "<group>"; };
 		BC21DDAE29FF1DD20063FA1D /* DotLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotLoadingView.swift; sourceTree = "<group>"; };
 		BC21DDB029FF1DF20063FA1D /* MessageRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowView.swift; sourceTree = "<group>"; };
@@ -166,8 +166,8 @@
 		BC21DDA629FF1CF40063FA1D /* ChatGPT */ = {
 			isa = PBXGroup;
 			children = (
-				BC21DDA829FF1D240063FA1D /* ChatGPTAPI.swift */,
-				BC21DDAA29FF1D4E0063FA1D /* ChatGPTAPIModels.swift */,
+				BC21DDA829FF1D240063FA1D /* ChatGPTAPIModels.swift */,
+				BC21DDAA29FF1D4E0063FA1D /* ChatGPTAPI.swift */,
 			);
 			path = ChatGPT;
 			sourceTree = "<group>";
@@ -310,7 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC21DDA929FF1D240063FA1D /* ChatGPTAPI.swift in Sources */,
+				BC21DDA929FF1D240063FA1D /* ChatGPTAPIModels.swift in Sources */,
 				BC21DDB429FF1E810063FA1D /* MessageRow.swift in Sources */,
 				BC21DDB129FF1DF20063FA1D /* MessageRowView.swift in Sources */,
 				BC02B4EF2A09D4A50027BCA9 /* LoadingViewController.swift in Sources */,
@@ -326,7 +326,7 @@
 				BC21DDAF29FF1DD20063FA1D /* DotLoadingView.swift in Sources */,
 				BC21DDA429FF1C390063FA1D /* ContentViewModel.swift in Sources */,
 				BCA9008D2A06B611008E01AE /* DocumentPicker.swift in Sources */,
-				BC21DDAB29FF1D4E0063FA1D /* ChatGPTAPIModels.swift in Sources */,
+				BC21DDAB29FF1D4E0063FA1D /* ChatGPTAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +455,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DocGPT/DocGPT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"DocGPT/Preview Content\"";
 				DEVELOPMENT_TEAM = 6P7J87MYM2;
 				ENABLE_PREVIEWS = YES;
@@ -488,7 +488,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DocGPT/DocGPT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"DocGPT/Preview Content\"";
 				DEVELOPMENT_TEAM = 6P7J87MYM2;
 				ENABLE_PREVIEWS = YES;

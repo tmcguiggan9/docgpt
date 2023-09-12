@@ -85,7 +85,7 @@ class PybeRequests: ObservableObject {
     func getChatHistoryForGroup(groupID: String, bearerToken: String, completionHandler: @escaping ([[String: String]]?, Error?) -> Void) {
         let url = URL(string: "https://doc-gpt-app.azurewebsites.net/get-chat-history-for-group")!
         let jsonBody = ["group_id": groupID]
-        var request = buildRequestWithUrl(url: url, bearerToken: bearerToken, requestBody: jsonBody)
+        let request = buildRequestWithUrl(url: url, bearerToken: bearerToken, requestBody: jsonBody)
         
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
             self.handleArrayResponse(data: data, error: error, key: "chat_history", completionHandler: completionHandler)
@@ -96,7 +96,7 @@ class PybeRequests: ObservableObject {
     func clearChatHistoryForUser(userID: String, bearerToken: String, completionHandler: @escaping (Bool, Error?) -> Void) {
         let url = URL(string: "https://doc-gpt-app.azurewebsites.net/clear-chat-history")!
         let jsonBody = ["user_id": userID]
-        var request = buildRequestWithUrl(url: url, bearerToken: bearerToken, requestBody: jsonBody)
+        let request = buildRequestWithUrl(url: url, bearerToken: bearerToken, requestBody: jsonBody)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             self.handleStatusResponse(data: data, response: response, error: error, completionHandler: completionHandler)
@@ -125,7 +125,7 @@ class PybeRequests: ObservableObject {
                 "chat_history": chatHistory
             ]
         }
-        var request = buildRequestWithUrl(url: url, bearerToken: bearerToken, requestBody: requestBody)
+        let request = buildRequestWithUrl(url: url, bearerToken: bearerToken, requestBody: requestBody)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             self.handleStatusResponse(data: data, response: response, error: error, completionHandler: completionHandler)
@@ -136,7 +136,7 @@ class PybeRequests: ObservableObject {
     func retrieveGroupsForUser(userID: String, bearerToken: String, completionHandler: @escaping ([Group]?, Error?) -> Void) {
         let url = URL(string: "https://doc-gpt-app.azurewebsites.net/get-groups-for-user")!
         let jsonBody = ["user_id": userID]
-        var request = buildRequestWithUrl(url: url, bearerToken: bearerToken, requestBody: jsonBody)
+        let request = buildRequestWithUrl(url: url, bearerToken: bearerToken, requestBody: jsonBody)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
