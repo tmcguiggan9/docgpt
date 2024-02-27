@@ -1,5 +1,5 @@
 //
-//  ChatGPTAPI.swift
+//  ChatGPTAPIModels.swift
 //  DocGPT
 //
 //  Created by Edward McGuiggan on 4/30/23.
@@ -13,7 +13,6 @@ struct Message: Codable {
 }
 
 extension Array where Element == Message {
-    
     var contentCount: Int { reduce(0, { $0 + $1.content.count })}
 }
 

@@ -125,7 +125,7 @@ class ChatGPTAPI: @unchecked Sendable {
                         if let error = error {
                             print(error)
                         } else {
-                            print("SUCCESS")
+                            print("SUCCESS Updating chat history")
                         }
                     }
                     continuation.finish()

@@ -36,12 +36,14 @@ struct SideMenuView: View {
                                 }
                 }
             }
-            Button(action: {
-                isSideMenuVisible = false
-                isGroupMessage = false
-            }) {
-                Text("Return to Personal Chat")
-                .padding()
+            if isGroupMessage == true {
+                Button(action: {
+                    isSideMenuVisible = false
+                    isGroupMessage = false
+                }) {
+                    Text("Return to Personal Chat")
+                    .padding()
+                }
             }
             if isGroupMessage == false {
                 Button(action: {

@@ -22,10 +22,16 @@
 		BC21DDB129FF1DF20063FA1D /* MessageRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDB029FF1DF20063FA1D /* MessageRowView.swift */; };
 		BC21DDB429FF1E810063FA1D /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDB329FF1E810063FA1D /* MessageRow.swift */; };
 		BC21DDB829FF24740063FA1D /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDB729FF24740063FA1D /* Authenticator.swift */; };
+		BC6D668A2B8D347D001D5203 /* PDFViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D66892B8D347D001D5203 /* PDFViewer.swift */; };
 		BC80D6BD2A02ED420066F120 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC80D6BC2A02ED420066F120 /* AppDelegate.swift */; };
+		BC8BACCF2B8D086C00A2E644 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BACCE2B8D086C00A2E644 /* MainView.swift */; };
+		BC8BACD12B8D194D00A2E644 /* DocumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BACD02B8D194D00A2E644 /* DocumentsViewModel.swift */; };
+		BC8BACD32B8D1B7F00A2E644 /* DocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BACD22B8D1B7F00A2E644 /* DocumentsView.swift */; };
 		BCA9008B2A061E16008E01AE /* PybeRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA9008A2A061E15008E01AE /* PybeRequests.swift */; };
 		BCA9008D2A06B611008E01AE /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA9008C2A06B611008E01AE /* DocumentPicker.swift */; };
+		BCAE1C1B2AEC0C5D0068658A /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAE1C1A2AEC0C5D0068658A /* SplashScreenView.swift */; };
 		BCB2DCB02A4501A700B21F1F /* SignInSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB2DCAF2A4501A700B21F1F /* SignInSignUpViewController.swift */; };
+		BCB58D442AFAB51600C0A197 /* View+TypeErasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB58D432AFAB51600C0A197 /* View+TypeErasure.swift */; };
 		D85F4949CA0C96C5FCB19720 /* Pods_DocGPT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1CB15D2D3CAC579343231C /* Pods_DocGPT.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,11 +54,17 @@
 		BC21DDB329FF1E810063FA1D /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
 		BC21DDB729FF24740063FA1D /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		BC21DDB929FF5C5D0063FA1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BC6D66892B8D347D001D5203 /* PDFViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewer.swift; sourceTree = "<group>"; };
 		BC80D6BA2A02EBCB0066F120 /* DocGPT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DocGPT.entitlements; sourceTree = "<group>"; };
 		BC80D6BC2A02ED420066F120 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BC8BACCE2B8D086C00A2E644 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		BC8BACD02B8D194D00A2E644 /* DocumentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewModel.swift; sourceTree = "<group>"; };
+		BC8BACD22B8D1B7F00A2E644 /* DocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsView.swift; sourceTree = "<group>"; };
 		BCA9008A2A061E15008E01AE /* PybeRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PybeRequests.swift; sourceTree = "<group>"; };
 		BCA9008C2A06B611008E01AE /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
+		BCAE1C1A2AEC0C5D0068658A /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		BCB2DCAF2A4501A700B21F1F /* SignInSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInSignUpViewController.swift; sourceTree = "<group>"; };
+		BCB58D432AFAB51600C0A197 /* View+TypeErasure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+TypeErasure.swift"; sourceTree = "<group>"; };
 		BF01C24A6BCA1D77BB8884C8 /* Pods-DocGPT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocGPT.debug.xcconfig"; path = "Target Support Files/Pods-DocGPT/Pods-DocGPT.debug.xcconfig"; sourceTree = "<group>"; };
 		DA1CB15D2D3CAC579343231C /* Pods_DocGPT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DocGPT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -142,6 +154,11 @@
 				BCA9008C2A06B611008E01AE /* DocumentPicker.swift */,
 				BC02B4EE2A09D4A50027BCA9 /* LoadingViewController.swift */,
 				BCB2DCAF2A4501A700B21F1F /* SignInSignUpViewController.swift */,
+				BCAE1C1A2AEC0C5D0068658A /* SplashScreenView.swift */,
+				BCB58D432AFAB51600C0A197 /* View+TypeErasure.swift */,
+				BC8BACCE2B8D086C00A2E644 /* MainView.swift */,
+				BC8BACD22B8D1B7F00A2E644 /* DocumentsView.swift */,
+				BC6D66892B8D347D001D5203 /* PDFViewer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -150,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				BC21DDA329FF1C390063FA1D /* ContentViewModel.swift */,
+				BC8BACD02B8D194D00A2E644 /* DocumentsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -311,22 +329,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC21DDA929FF1D240063FA1D /* ChatGPTAPIModels.swift in Sources */,
+				BCB58D442AFAB51600C0A197 /* View+TypeErasure.swift in Sources */,
 				BC21DDB429FF1E810063FA1D /* MessageRow.swift in Sources */,
 				BC21DDB129FF1DF20063FA1D /* MessageRowView.swift in Sources */,
 				BC02B4EF2A09D4A50027BCA9 /* LoadingViewController.swift in Sources */,
 				BCA9008B2A061E16008E01AE /* PybeRequests.swift in Sources */,
 				BC21DD9B29FF1B740063FA1D /* DocGPT.xcdatamodeld in Sources */,
+				BC6D668A2B8D347D001D5203 /* PDFViewer.swift in Sources */,
 				BC21DDAD29FF1DB00063FA1D /* SideMenuVIew.swift in Sources */,
 				BC21DDB829FF24740063FA1D /* Authenticator.swift in Sources */,
 				BC21DD9829FF1B740063FA1D /* Persistence.swift in Sources */,
+				BC8BACCF2B8D086C00A2E644 /* MainView.swift in Sources */,
 				BC21DD9129FF1B710063FA1D /* ContentView.swift in Sources */,
 				BC80D6BD2A02ED420066F120 /* AppDelegate.swift in Sources */,
+				BCAE1C1B2AEC0C5D0068658A /* SplashScreenView.swift in Sources */,
 				BCB2DCB02A4501A700B21F1F /* SignInSignUpViewController.swift in Sources */,
+				BC8BACD32B8D1B7F00A2E644 /* DocumentsView.swift in Sources */,
 				BC21DD8F29FF1B710063FA1D /* DocGPTApp.swift in Sources */,
 				BC21DDAF29FF1DD20063FA1D /* DotLoadingView.swift in Sources */,
 				BC21DDA429FF1C390063FA1D /* ContentViewModel.swift in Sources */,
 				BCA9008D2A06B611008E01AE /* DocumentPicker.swift in Sources */,
 				BC21DDAB29FF1D4E0063FA1D /* ChatGPTAPI.swift in Sources */,
+				BC8BACD12B8D194D00A2E644 /* DocumentsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +479,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DocGPT/DocGPT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"DocGPT/Preview Content\"";
 				DEVELOPMENT_TEAM = 6P7J87MYM2;
 				ENABLE_PREVIEWS = YES;
@@ -488,7 +512,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DocGPT/DocGPT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"DocGPT/Preview Content\"";
 				DEVELOPMENT_TEAM = 6P7J87MYM2;
 				ENABLE_PREVIEWS = YES;

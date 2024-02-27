@@ -8,12 +8,16 @@
 import Foundation
 import SwiftUI
 import AVKit
+import PDFKit
+import CoreData
+
 
 class ContentViewModel: ObservableObject {
-    
     @Published var isInteractingWithChatGPT = false
     @Published var messages: [MessageRow] = []
     @Published var inputMessage: String = ""
+    @Published var navigationTitle = "Hunter"
+    @Published var authenticator: Authenticator?
     @ObservedObject var pybeRequests = PybeRequests()
     var accessToken: String?
     var userID: String?
@@ -43,7 +47,7 @@ class ContentViewModel: ObservableObject {
                 let message = MessageRow(isInteractingWithChatGPT: false, sendImage: givenName, sendText: text, responseImage: "")
                 messages.append(message)
             }
-    
+            
             var chat = [[String: String]]()
             if let givenName = givenName {
                 chat = [["message": text, "sender": givenName]]
@@ -149,4 +153,255 @@ class ContentViewModel: ObservableObject {
         synthesizer?.stopSpeaking(at: .immediate)
     }
     
+    func getChatHistoryForGroup(selectedGroup: Group, sceneDelegate: MainSceneDelegate) {
+        guard let viewController = sceneDelegate.rootViewController else {
+            preconditionFailure("missing root view controller")
+        }
+        
+        let loadingVC = LoadingViewController(message: "Retrieving Chat History")
+        
+        DispatchQueue.main.async {
+            viewController.present(loadingVC, animated: true, completion: nil)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            guard let accessToken = self.accessToken else {
+                print("Access token returned nil")
+                return
+            }
+            self.pybeRequests.getChatHistoryForGroup(groupID: selectedGroup.id, bearerToken: accessToken) { response, error in
+                if let error = error {
+                    print("Error: \(error)")
+                } else if let response = response {
+                    var messages: [MessageRow] = []
+                    for chat in response {
+                        let message = chat["message"]
+                        let sender = chat["sender"]
+                        var image = String()
+                        if sender == "chat-GPT" {
+                            image = "openai"
+                        } else {
+                            image = sender!
+                        }
+                        let row = MessageRow(isInteractingWithChatGPT: false, sendImage: image, sendText: message!, responseImage: "")
+                        messages.append(row)
+                    }
+                    DispatchQueue.main.async {
+                        self.messages = messages
+                        loadingVC.dismiss(animated: true)
+                        self.navigationTitle = selectedGroup.name
+                    }
+                }
+            }
+        }
+    }
+    
+    func getChatHistoryForUser(isFreshOpen: Bool, sceneDelegate: MainSceneDelegate, completion: @escaping() -> Void) {
+        guard let accessToken = accessToken else {
+            print("COULD NOT FIND ACCESSTOKEN")
+            return
+        }
+        
+        guard let userID = userID else {
+            print("COULD NOT FIND USERID")
+            return
+        }
+        
+        guard let viewController = sceneDelegate.rootViewController else {
+            preconditionFailure("missing root view controller")
+        }
+        
+        let loadingVC = LoadingViewController(message: "Retrieving Chat History")
+        
+        if isFreshOpen == false {
+            DispatchQueue.main.async {
+                viewController.present(loadingVC, animated: true) {
+                    self.pybeRequests.getChatHistoryForUser(userID: userID, bearerToken: accessToken) { response, error in
+                        if let error = error {
+                            print("Error: \(error)")
+                        } else if let response = response {
+                            var messages: [MessageRow] = []
+                            for chat in response {
+                                let message = chat["message"]
+                                let sender = chat["sender"]
+                                var image = String()
+                                if sender == "chat-GPT" {
+                                    image = "openai"
+                                } else {
+                                    image = sender!
+                                }
+                                let row = MessageRow(isInteractingWithChatGPT: false, sendImage: image, sendText: message!, responseImage: "")
+                                messages.append(row)
+                            }
+                            DispatchQueue.main.async {
+                                self.messages = messages
+                                self.navigationTitle = "HUNTER"
+                                loadingVC.dismiss(animated: true)
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            self.pybeRequests.getChatHistoryForUser(userID: userID, bearerToken: accessToken) { response, error in
+                if let error = error {
+                    print("Error: \(error)")
+                } else if let response = response {
+                    var messages: [MessageRow] = []
+                    for chat in response {
+                        let message = chat["message"]
+                        let sender = chat["sender"]
+                        var image = String()
+                        if sender == "chat-GPT" {
+                            image = "openai"
+                        } else {
+                            image = sender!
+                        }
+                        let row = MessageRow(isInteractingWithChatGPT: false, sendImage: image, sendText: message!, responseImage: "")
+                        messages.append(row)
+                    }
+                    DispatchQueue.main.async {
+                        self.messages = messages
+                        self.navigationTitle = "HUNTER"
+                        completion()
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
+    }
+    
+    func clearChatHistory(isGroupMessage: Bool) {
+        if isGroupMessage {
+            print("CLEAR CHAT HISTORY FOR GROUP")
+        } else {
+            if let userID = userID, let accessToken = accessToken {
+                pybeRequests.clearChatHistoryForUser(userID: userID, bearerToken: accessToken) { _, error in
+                    if let error = error {
+                        print("HAD ERROR WHILE DELETING HISTORY \(error)")
+                    } else {
+                        DispatchQueue.main.async {
+                            self.messages = []
+                            print("SUCCESSFULLY DELETED HISTORY")
+                        }
+                    }
+                }
+            } else {
+                print("COULD NOT CLEAR CHAT HISTORY")
+            }
+        }
+    }
+    
+    func logIn(isFreshOpen: Bool, sceneDelegate: MainSceneDelegate, completion: @escaping() -> Void) {
+        DispatchQueue.main.async {
+            guard let viewController = sceneDelegate.rootViewController else {
+                preconditionFailure("missing root view controller")
+            }
+            
+            self.authenticator = Authenticator(view: viewController)
+            self.authenticator?.baseAuth(completionHandler: { token, userID, givenName  in
+                print("token is \(String(describing: token))")
+                print("userID is \(String(describing: userID))")
+                
+                if let token = token, let userID = userID, let givenName = givenName {
+                    self.accessToken = token
+                    self.userID = userID
+                    self.givenName = givenName
+                    self.accessToken = token
+                    self.userID = userID
+                    self.givenName = givenName
+                    self.getChatHistoryForUser(isFreshOpen: isFreshOpen, sceneDelegate: sceneDelegate) {
+                        completion()
+                    }
+                }
+            })
+        }
+    }
+    
+    func extractTextFromPDF(at pdfURL: URL) -> String? {
+        guard pdfURL.startAccessingSecurityScopedResource() else {
+            print("Error accessing security scoped resource.")
+            return nil
+        }
+        defer { pdfURL.stopAccessingSecurityScopedResource() }
+        
+        guard let pdf = PDFDocument(url: pdfURL) else {
+            return nil
+        }
+        var text = ""
+        for pageIndex in 0 ..< pdf.pageCount {
+            guard let page = pdf.page(at: pageIndex) else {
+                continue
+            }
+            guard let pageContent = page.string else {
+                continue
+            }
+            text += pageContent
+        }
+        return text
+    }
+    
+    func uploadPDF(pdfURL: URL, completion: @escaping() -> Void) {
+        // Ensure security-scoped resource access
+        guard pdfURL.startAccessingSecurityScopedResource() else {
+            print("Error accessing security scoped resource.")
+            return
+        }
+        defer { pdfURL.stopAccessingSecurityScopedResource() }
+        
+        if let accessToken = accessToken {
+            pybeRequests.uploadPdf(pdfURL: pdfURL, bearerToken: accessToken) { _, error in
+                if let error = error {
+                    print("HAD ERROR WHILE UPLOADING FILE \(error)")
+                } else {
+                    let documentName = pdfURL.deletingPathExtension().lastPathComponent
+                    self.saveDocument(name: documentName, originalFilePath: pdfURL) {
+                        completion()
+                    }
+                }
+            }
+        } else {
+            print("COULD NOT UPLOAD FILE")
+        }
+    }
+    
+    func saveDocument(name: String, originalFilePath: URL, completion: @escaping () -> Void) {
+        let fileManager = FileManager.default
+        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("Documents directory not found")
+            return
+        }
+
+        guard originalFilePath.startAccessingSecurityScopedResource() else {
+            print("Error accessing security scoped resource.")
+            return
+        }
+        defer { originalFilePath.stopAccessingSecurityScopedResource() }
+        // Create a new file name to avoid name conflicts
+        let newFileName = UUID().uuidString + "-" + name
+        let newFilePath = documentsDirectory.appendingPathComponent(newFileName)
+
+        do {
+            // Copy the file from the original location to the app's Documents directory
+            try fileManager.copyItem(at: originalFilePath, to: newFilePath)
+            print("File copied successfully to \(newFilePath.path)")
+
+            // Save the new file path in Core Data
+            let context = PersistenceController.shared.container.viewContext
+            let newDocument = Document(context: context)
+            newDocument.name = name
+            newDocument.filePath = newFilePath.path // Save the path of the copied file
+            newDocument.dateAdded = Date()
+            
+            try context.save()
+            print("Document saved successfully with new path.")
+            completion()
+        } catch {
+            print("Failed to copy file or save document: \(error.localizedDescription)")
+        }
+    }
+
 }

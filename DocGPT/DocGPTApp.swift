@@ -22,17 +22,31 @@ extension EnvironmentValues {
 
 @main
 struct DocGPTApp: App {
+    
+    init() {
+        setupNavigationBarAppearance()
+    }
 
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
-    @StateObject var vm = ContentViewModel(api: ChatGPTAPI(apiKey: "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"))
     
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ContentView(vm: vm)
+                SplashScreenView()
                     .preferredColorScheme(.dark)
             }
             .preferredColorScheme(.dark)
         }
     }
+    
+    func setupNavigationBarAppearance() {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor.systemBackground // Or any color you prefer
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.label] // Adjust title color
+            
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            UINavigationBar.appearance().compactAppearance = appearance // Optional for smaller nav bars
+        }
 }

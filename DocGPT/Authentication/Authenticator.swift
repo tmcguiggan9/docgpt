@@ -87,7 +87,6 @@ class Authenticator: ObservableObject {
         }
     }
 
-
     func parseIdToken(_ idToken: String) -> [String: Any]? {
         let parts = idToken.split(separator: ".")
         guard parts.count == 3 else { return nil }
@@ -104,9 +103,7 @@ class Authenticator: ObservableObject {
         }
     }
 
-
     func refreshToken(completionHandler: @escaping (String?, String?, String?) -> Void) {
-
         do {
             let authority = try self.getAuthority(forPolicy: self.kSignupOrSigninPolicy)
 
@@ -185,8 +182,6 @@ class Authenticator: ObservableObject {
         }
     }
 
-
-
     func signoutUser() {
         do {
 
@@ -197,9 +192,6 @@ class Authenticator: ObservableObject {
             } else {
                 print("There is no account to signing out!")
             }
-
-
-
             print("Signed out")
 
         } catch  {

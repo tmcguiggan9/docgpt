@@ -10,7 +10,6 @@ import UIKit
 class LoadingViewController: UIViewController {
     var message: String
     
-    
     init(message: String) {
         self.message = message
         super.init(nibName: nil, bundle: nil)

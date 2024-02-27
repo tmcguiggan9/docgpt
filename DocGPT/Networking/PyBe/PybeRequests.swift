@@ -161,4 +161,37 @@ class PybeRequests: ObservableObject {
         }
         task.resume()
     }
+    
+    func uploadPdf(pdfURL: URL, bearerToken: String, completionHandler: @escaping (Bool, Error?) -> Void) {
+        let url = URL(string: "https://doc-gpt-app.azurewebsites.net/upload-pdf")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
+        
+        let boundary = "Boundary-\(UUID().uuidString)"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        var body = Data()
+        
+        // Add PDF file data
+        if let pdfData = try? Data(contentsOf: pdfURL) {
+            let filename = pdfURL.lastPathComponent
+            body.append("--\(boundary)\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"pdf\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
+            body.append("Content-Type: application/pdf\r\n\r\n".data(using: .utf8)!)
+            body.append(pdfData)
+            body.append("\r\n".data(using: .utf8)!)
+        }
+        
+        // End of the body
+        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+        
+        request.httpBody = body
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            self.handleStatusResponse(data: data, response: response, error: error, completionHandler: completionHandler)
+        }
+        task.resume()
+    }
 }
