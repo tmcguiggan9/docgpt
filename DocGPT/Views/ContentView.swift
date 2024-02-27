@@ -31,100 +31,128 @@ struct ContentView: View {
     @State var shouldSignInUser = false
     @State var shouldClearChatHistory = false
     @State var displayClearChatHistoryPrompt = false
+    @State private var uploadStatus: UploadStatus = .none
     
     var body: some View {
         NavigationView{
-            VStack(spacing: 0) {
-                chatListView
-                    .navigationBarTitle(vm.navigationTitle, displayMode: .inline)
-                    .navigationBarItems(
-                        leading: Button("Upload") {
-                            isPresentingDocumentPicker = true
-                        },
-                        trailing: Button(action: {
-                            isSideMenuVisible = true
-                        }) {
-                            Image(systemName: "line.horizontal.3").imageScale(.large)
-                        }
-                    )
-                    .background(colorScheme == .light ? Color.white : Color(red: 52/255, green: 53/255, blue: 65/255, opacity: 0.5))
-                    .sheet(isPresented: $isPresentingDocumentPicker) {
-                        DocumentPicker(filePath: $selectedFile)
-                    }
-                    .sheet(isPresented: $isSideMenuVisible) {
-                        SideMenuView(userID: $vm.userID, accessToken: $vm.accessToken, selectedGroup: $selectedGroup, isSideMenuVisible: $isSideMenuVisible, isGroupMessage: $isGroupMessage, shouldSignOutUser: $shouldSignOutUser, shouldClearChatHistory: $shouldClearChatHistory)
-                            .onDisappear {
-                                if shouldSignOutUser == true {
-                                    vm.authenticator?.signoutUser()
-                                    vm.messages = []
-                                    isSignUpViewVisible = true
-                                } else if shouldClearChatHistory == true {
-                                    shouldClearChatHistory = false
-                                    displayClearChatHistoryPrompt = true
-                                }
-                                
-                            }
-                    }
-                    .fullScreenCover(isPresented: $isSignUpViewVisible) {
-                        SignInSignUpView(shouldSignInUser: $shouldSignInUser, isSignUpViewVisible: $isSignUpViewVisible)
-                    }
-                    .onChange(of: selectedFile) { fileURL in
-                        guard let fileURL = fileURL else {
-                            return
-                        }
-                        
-                        guard fileURL.startAccessingSecurityScopedResource() else {
-                            print("Error accessing security scoped resource.")
-                            return
-                        }
-                        defer { fileURL.stopAccessingSecurityScopedResource() }
-                        
-                        Task {
-                            let text = vm.extractTextFromPDF(at: fileURL)
-                            if let text = text {
-                                await vm.uploadDocument(text: text)
-                                vm.uploadPDF(pdfURL: fileURL) {
-                                    documentsViewModel.fetchDocuments()
-                                }
-                           }
-                        }
-                    }
-                    .onChange(of: selectedGroup, perform: { group in
-                        if let _ = selectedGroup, let group = group {
-                            vm.getChatHistoryForGroup(selectedGroup: group, sceneDelegate: sceneDelegate)
-                            vm.groupID = group.id
-                        }
-                    })
-                    .onChange(of: shouldSignInUser, perform: { newValue in
-                        vm.logIn(isFreshOpen: false, sceneDelegate: sceneDelegate) {
-                            print("FreshOpen is false")
-                        }
-                    })
-                    .onChange(of: isGroupMessage, perform: { newValue in
-                        if newValue == true {
-                            print("DO NOTHING")
-                        } else {
-                            vm.getChatHistoryForUser(isFreshOpen: false, sceneDelegate: sceneDelegate) {
-                                print("isFreshOpen is false")
-                            }
-                            print("GETTING USER CHAT HISTORY")
-                        }
-                    })
-                    .alert(isPresented: $displayClearChatHistoryPrompt) {
-                        Alert(
-                            title: Text("Are you sure you want to clear chat history?"),
-                            message: Text("This action cannot be undone."),
-                            primaryButton: .default(Text("Yes")) {
-                                displayClearChatHistoryPrompt = false
-                                vm.clearChatHistory(isGroupMessage: isGroupMessage)
+            ZStack {
+                VStack(spacing: 0) {
+                    chatListView
+                        .navigationBarTitle(vm.navigationTitle, displayMode: .inline)
+                        .navigationBarItems(
+                            leading: Button("Upload") {
+                                isPresentingDocumentPicker = true
                             },
-                            secondaryButton: .cancel(Text("No"))
+                            trailing: Button(action: {
+                                isSideMenuVisible = true
+                            }) {
+                                Image(systemName: "line.horizontal.3").imageScale(.large)
+                            }
                         )
-                    }
+                        .background(colorScheme == .light ? Color.white : Color(red: 52/255, green: 53/255, blue: 65/255, opacity: 0.5))
+                        .sheet(isPresented: $isPresentingDocumentPicker) {
+                            DocumentPicker(filePath: $selectedFile)
+                        }
+                        .sheet(isPresented: $isSideMenuVisible) {
+                            SideMenuView(userID: $vm.userID, accessToken: $vm.accessToken, selectedGroup: $selectedGroup, isSideMenuVisible: $isSideMenuVisible, isGroupMessage: $isGroupMessage, shouldSignOutUser: $shouldSignOutUser, shouldClearChatHistory: $shouldClearChatHistory)
+                                .onDisappear {
+                                    if shouldSignOutUser == true {
+                                        vm.authenticator?.signoutUser()
+                                        vm.messages = []
+                                        isSignUpViewVisible = true
+                                    } else if shouldClearChatHistory == true {
+                                        shouldClearChatHistory = false
+                                        displayClearChatHistoryPrompt = true
+                                    }
+                                    
+                                }
+                        }
+                        .fullScreenCover(isPresented: $isSignUpViewVisible) {
+                            SignInSignUpView(shouldSignInUser: $shouldSignInUser, isSignUpViewVisible: $isSignUpViewVisible)
+                        }
+                        .onChange(of: selectedFile) { fileURL in
+                            uploadStatus = .uploading
+                            guard let fileURL = fileURL else {
+                                return
+                            }
+                            
+                            guard fileURL.startAccessingSecurityScopedResource() else {
+                                print("Error accessing security scoped resource.")
+                                return
+                            }
+                            defer { fileURL.stopAccessingSecurityScopedResource() }
+                            
+                            vm.uploadPDF(pdfURL: fileURL) {error in
+                                if let error = error {
+                                    uploadStatus = .failure(error.localizedDescription)
+                                } else {
+                                    documentsViewModel.fetchDocuments()
+                                    uploadStatus = .success
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                        uploadStatus = .none
+                                        print(uploadStatus)
+                                    }
+                                }
+                            }
+                            //
+                            //                        Task {
+                            //                            let text = vm.extractTextFromPDF(at: fileURL)
+                            //                            if let text = text {
+                            //                                await vm.uploadDocument(text: text)
+                            //                                vm.uploadPDF(pdfURL: fileURL) {
+                            //                                    documentsViewModel.fetchDocuments()
+                            //                                }
+                            //                           }
+                            //                        }
+                        }
+                        .onChange(of: selectedGroup, perform: { group in
+                            if let _ = selectedGroup, let group = group {
+                                vm.getChatHistoryForGroup(selectedGroup: group, sceneDelegate: sceneDelegate)
+                                vm.groupID = group.id
+                            }
+                        })
+                        .onChange(of: shouldSignInUser, perform: { newValue in
+                            vm.logIn(isFreshOpen: false, sceneDelegate: sceneDelegate) {
+                                print("FreshOpen is false")
+                            }
+                        })
+                        .onChange(of: isGroupMessage, perform: { newValue in
+                            if newValue == true {
+                                print("DO NOTHING")
+                            } else {
+                                vm.getChatHistoryForUser(isFreshOpen: false, sceneDelegate: sceneDelegate) {
+                                    print("isFreshOpen is false")
+                                }
+                                print("GETTING USER CHAT HISTORY")
+                            }
+                        })
+                        .alert(isPresented: $displayClearChatHistoryPrompt) {
+                            Alert(
+                                title: Text("Are you sure you want to clear chat history?"),
+                                message: Text("This action cannot be undone."),
+                                primaryButton: .default(Text("Yes")) {
+                                    displayClearChatHistoryPrompt = false
+                                    vm.clearChatHistory(isGroupMessage: isGroupMessage)
+                                },
+                                secondaryButton: .cancel(Text("No"))
+                            )
+                        }
+                }
+                if shouldShowUploadStatus() {
+                    UploadStatusView(uploadStatus: uploadStatus)
+                }
             }
         }
     }
     
+    private func shouldShowUploadStatus() -> Bool {
+            switch uploadStatus {
+            case .none:
+                return false
+            default:
+                return true
+            }
+        }
     
     var chatListView: some View {
         ScrollViewReader { proxy in

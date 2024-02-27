@@ -76,11 +76,11 @@ class ContentViewModel: ObservableObject {
         }
     }
     
-    @MainActor
-    func uploadDocument(text: String) async {
-        let text = "Can you summarize the following document? \n" + text
-        await send(text: "Uploading Document...", documentText: text)
-    }
+//    @MainActor
+//    func uploadDocument(text: String) async {
+//        let text = "Can you summarize the following document? \n" + text
+//        await send(text: "Uploading Document...", documentText: text)
+//    }
     
     @MainActor
     func retry(message: MessageRow) async {
@@ -344,7 +344,7 @@ class ContentViewModel: ObservableObject {
         return text
     }
     
-    func uploadPDF(pdfURL: URL, completion: @escaping() -> Void) {
+    func uploadPDF(pdfURL: URL, completion: @escaping(Error?) -> Void) {
         // Ensure security-scoped resource access
         guard pdfURL.startAccessingSecurityScopedResource() else {
             print("Error accessing security scoped resource.")
@@ -358,8 +358,12 @@ class ContentViewModel: ObservableObject {
                     print("HAD ERROR WHILE UPLOADING FILE \(error)")
                 } else {
                     let documentName = pdfURL.deletingPathExtension().lastPathComponent
-                    self.saveDocument(name: documentName, originalFilePath: pdfURL) {
-                        completion()
+                    self.saveDocument(name: documentName, originalFilePath: pdfURL) {error in
+                        if let error = error {
+                            completion(error)
+                        } else {
+                            completion(nil)
+                        }
                     }
                 }
             }
@@ -368,7 +372,7 @@ class ContentViewModel: ObservableObject {
         }
     }
     
-    func saveDocument(name: String, originalFilePath: URL, completion: @escaping () -> Void) {
+    func saveDocument(name: String, originalFilePath: URL, completion: @escaping (Error?) -> Void) {
         let fileManager = FileManager.default
         guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             print("Documents directory not found")
@@ -398,8 +402,9 @@ class ContentViewModel: ObservableObject {
             
             try context.save()
             print("Document saved successfully with new path.")
-            completion()
+            completion(nil)
         } catch {
+            completion(error)
             print("Failed to copy file or save document: \(error.localizedDescription)")
         }
     }

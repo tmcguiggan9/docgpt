@@ -23,6 +23,7 @@
 		BC21DDB429FF1E810063FA1D /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDB329FF1E810063FA1D /* MessageRow.swift */; };
 		BC21DDB829FF24740063FA1D /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21DDB729FF24740063FA1D /* Authenticator.swift */; };
 		BC6D668A2B8D347D001D5203 /* PDFViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D66892B8D347D001D5203 /* PDFViewer.swift */; };
+		BC6D668C2B8D897B001D5203 /* UploadStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D668B2B8D897B001D5203 /* UploadStatusView.swift */; };
 		BC80D6BD2A02ED420066F120 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC80D6BC2A02ED420066F120 /* AppDelegate.swift */; };
 		BC8BACCF2B8D086C00A2E644 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BACCE2B8D086C00A2E644 /* MainView.swift */; };
 		BC8BACD12B8D194D00A2E644 /* DocumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BACD02B8D194D00A2E644 /* DocumentsViewModel.swift */; };
@@ -55,6 +56,7 @@
 		BC21DDB729FF24740063FA1D /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		BC21DDB929FF5C5D0063FA1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BC6D66892B8D347D001D5203 /* PDFViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewer.swift; sourceTree = "<group>"; };
+		BC6D668B2B8D897B001D5203 /* UploadStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadStatusView.swift; sourceTree = "<group>"; };
 		BC80D6BA2A02EBCB0066F120 /* DocGPT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DocGPT.entitlements; sourceTree = "<group>"; };
 		BC80D6BC2A02ED420066F120 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC8BACCE2B8D086C00A2E644 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				BC8BACCE2B8D086C00A2E644 /* MainView.swift */,
 				BC8BACD22B8D1B7F00A2E644 /* DocumentsView.swift */,
 				BC6D66892B8D347D001D5203 /* PDFViewer.swift */,
+				BC6D668B2B8D897B001D5203 /* UploadStatusView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				BC21DD9829FF1B740063FA1D /* Persistence.swift in Sources */,
 				BC8BACCF2B8D086C00A2E644 /* MainView.swift in Sources */,
 				BC21DD9129FF1B710063FA1D /* ContentView.swift in Sources */,
+				BC6D668C2B8D897B001D5203 /* UploadStatusView.swift in Sources */,
 				BC80D6BD2A02ED420066F120 /* AppDelegate.swift in Sources */,
 				BCAE1C1B2AEC0C5D0068658A /* SplashScreenView.swift in Sources */,
 				BCB2DCB02A4501A700B21F1F /* SignInSignUpViewController.swift in Sources */,
@@ -479,7 +483,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DocGPT/DocGPT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"DocGPT/Preview Content\"";
 				DEVELOPMENT_TEAM = 6P7J87MYM2;
 				ENABLE_PREVIEWS = YES;
@@ -512,7 +516,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DocGPT/DocGPT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"DocGPT/Preview Content\"";
 				DEVELOPMENT_TEAM = 6P7J87MYM2;
 				ENABLE_PREVIEWS = YES;
